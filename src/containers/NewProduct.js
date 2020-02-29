@@ -1,16 +1,18 @@
 import React, { useRef, useState } from "react";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { API } from "aws-amplify";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
+import { s3Upload } from "../libs/awsLib";
 import "./NewProduct.css";
 
 export default function NewProduct(props) {
   const file = useRef(null);
-  const [description, setDescription] = useState("");
+  const [Category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm() {
-    return description.length > 0;
+    return Category.length > 0;
   }
 
   function handleFileChange(event) {
@@ -29,16 +31,32 @@ export default function NewProduct(props) {
     }
 
     setIsLoading(true);
+
+    try {
+      const Attachment = file.current ? await s3Upload(file.current) : null;
+
+      await createProduct({ Category, Attachment });
+      props.history.push("/");
+    } catch (e) {
+      alert(e);
+      setIsLoading(false);
+    }
+  }
+
+  function createProduct(product) {
+    return API.post("products", "/products", {
+      body: product
+    });
   }
 
   return (
     <div className="NewProduct">
       <form onSubmit={handleSubmit}>
-        <FormGroup controlId="description">
+        <FormGroup controlId="Category">
           <FormControl
-            value={description}
+            value={Category}
             componentClass="textarea"
-            onChange={e => setDescription(e.target.value)}
+            onChange={e => setCategory(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId="file">
