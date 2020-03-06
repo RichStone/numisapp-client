@@ -87,6 +87,10 @@ export default function Products(props) {
     }
   }
 
+  function deleteProduct() {
+    return API.del("products", `/products/${props.match.params.id}`);
+  }
+
   async function handleDelete(event) {
     event.preventDefault();
 
@@ -99,6 +103,14 @@ export default function Products(props) {
     }
 
     setIsDeleting(true);
+
+    try {
+      await deleteProduct();
+      props.history.push("/");
+    } catch (e) {
+      alert(e);
+      setIsDeleting(false);
+    }
   }
 
   return (
