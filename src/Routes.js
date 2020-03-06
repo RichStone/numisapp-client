@@ -8,34 +8,41 @@ import Products from "./containers/Products";
 import NewProduct from "./containers/NewProduct";
 import Settings from "./containers/Settings";
 import AppliedRoute from "./components/AppliedRoute";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
-      <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
-      <AppliedRoute
+      <UnauthenticatedRoute
+        path="/login"
+        exact
+        component={Login}
+        appProps={appProps}
+      />
+      <UnauthenticatedRoute
         path="/signup"
         exact
         component={Signup}
         appProps={appProps}
       />
-      <AppliedRoute
-        path="/products/new"
+      <AuthenticatedRoute
+        path="/settings"
+        exact
+        component={Settings}
+        appProps={appProps}
+      />
+      <AuthenticatedRoute
+        path="/notes/new"
         exact
         component={NewProduct}
         appProps={appProps}
       />
-      <AppliedRoute
-        path="/products/:id"
+      <AuthenticatedRoute
+        path="/notes/:id"
         exact
         component={Products}
-        appProps={appProps}
-      />
-      <AppliedRoute
-        path="/settings"
-        exact
-        component={Settings}
         appProps={appProps}
       />
       {/* Finally, catch all unmatched routes */}
