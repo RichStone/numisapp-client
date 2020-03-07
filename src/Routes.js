@@ -34,13 +34,13 @@ export default function Routes({ appProps }) {
         appProps={appProps}
       />
       <AuthenticatedRoute
-        path="/notes/new"
+        path="/products/new"
         exact
         component={NewProduct}
         appProps={appProps}
       />
       <AuthenticatedRoute
-        path="/notes/:id"
+        path="/products/:id"
         exact
         component={Products}
         appProps={appProps}
