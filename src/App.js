@@ -40,7 +40,7 @@ function App(props) {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Numis App</Link>
+              <Link to="/">Numify</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
