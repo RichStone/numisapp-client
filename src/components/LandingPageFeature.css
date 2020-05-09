@@ -1,0 +1,8 @@
+.LandingPageFeature img {
+  max-width: 250px;
+  max-height: 125px;
+}
+
+.LandingPageFeature {
+  margin: 32px 0;
+}
