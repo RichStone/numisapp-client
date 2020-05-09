@@ -27,7 +27,7 @@ export default function Lander(props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="btn btn-info btn-lg">Schedule Demo</Button>
+            <Button className="btn btn-success btn-lg">Schedule Demo</Button>
           </a>
         </p>
       </Jumbotron>
@@ -43,7 +43,7 @@ export default function Lander(props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button className="btn btn-info btn-lg">Schedule Demo</Button>
+          <Button className="btn btn-success btn-lg">Schedule Demo</Button>
         </a>
       </div>
       <div>

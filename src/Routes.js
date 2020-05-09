@@ -7,6 +7,7 @@ import Signup from "./containers/SignUp";
 import Products from "./containers/Products";
 import NewProduct from "./containers/NewProduct";
 import Settings from "./containers/Settings";
+import Info from "./containers/Info";
 import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
@@ -31,6 +32,12 @@ export default function Routes({ appProps }) {
         path="/settings"
         exact
         component={Settings}
+        appProps={appProps}
+      />
+      <AuthenticatedRoute
+        path="/info"
+        exact
+        component={Info}
         appProps={appProps}
       />
       <AuthenticatedRoute
