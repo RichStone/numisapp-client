@@ -37,13 +37,13 @@ function App(props) {
     !isAuthenticating && (
       <div className="App container">
         <Nav activeKey="/home" className="nav">
-          <Nav.Item>
+          <Nav.Item className="brand">
             <Nav.Link href="/">Numify</Nav.Link>
           </Nav.Item>
 
           {isAuthenticated ? (
             <>
-              <Nav.Item className="pullRight">
+              <Nav.Item>
                 <Nav.Link href="/settings">Settings</Nav.Link>
               </Nav.Item>
               <Nav.Item>

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { API } from "aws-amplify";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
@@ -53,22 +53,20 @@ export default function NewProduct(props) {
   return (
     <div className="NewProduct">
       <form onSubmit={handleSubmit}>
-        <FormGroup controlId="Category">
-          <FormControl
+        <Form.Group controlId="Category">
+          <Form.Control
             value={Category}
             componentClass="textarea"
             onChange={(e) => setCategory(e.target.value)}
           />
-        </FormGroup>
-        <FormGroup controlId="file">
-          <FormLabel>Image</FormLabel>
-          <FormControl onChange={handleFileChange} type="file" />
-        </FormGroup>
+        </Form.Group>
+        <Form.Group controlId="file">
+          <Form.Label>Image</Form.Label>
+          <Form.Control onChange={handleFileChange} type="file" />
+        </Form.Group>
         <LoaderButton
           block
           type="submit"
-          bsSize="large"
-          bsStyle="primary"
           isLoading={isLoading}
           disabled={!validateForm()}
         >

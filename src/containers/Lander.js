@@ -15,7 +15,7 @@ export default function Lander(props) {
         <h1>Hello, Numismat!</h1>
         <p>
           We want you to{" "}
-          <span style={inlineBoldStyle}>sell more coins easier</span>! List your
+          <span style={inlineBoldStyle}>sell more coins easier!</span> List your
           coins in the numify app and they will be uploaded automatically to
           eBay, ma-shops, catawiki, and your own shop system. You have full
           control.

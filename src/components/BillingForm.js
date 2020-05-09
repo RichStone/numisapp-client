@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import LoaderButton from "./LoaderButton";
 import { useFormFields } from "../libs/hooksLib";
@@ -35,27 +35,27 @@ function BillingForm({ isLoading, onSubmit, ...props }) {
 
   return (
     <form className="BillingForm" onSubmit={handleSubmitClick}>
-      <FormGroup bsSize="large" controlId="storage">
-        <FormLabel>Storage</FormLabel>
-        <FormControl
+      <Form.Group controlId="storage">
+        <Form.Label>Storage</Form.Label>
+        <Form.Control
           min="0"
           type="number"
           value={fields.storage}
           onChange={handleFieldChange}
           placeholder="Number of products to store"
         />
-      </FormGroup>
+      </Form.Group>
       <hr />
-      <FormGroup bsSize="large" controlId="name">
-        <FormLabel>Cardholder&apos;s name</FormLabel>
-        <FormControl
+      <Form.Group controlId="name">
+        <Form.Label>Cardholder&apos;s name</Form.Label>
+        <Form.Control
           type="text"
           value={fields.name}
           onChange={handleFieldChange}
           placeholder="Name on the card"
         />
-      </FormGroup>
-      <FormLabel>Credit Card Info</FormLabel>
+      </Form.Group>
+      <Form.Label>Credit Card Info</Form.Label>
       <CardElement
         className="card-field"
         onChange={(e) => setIsCardComplete(e.complete)}
@@ -66,7 +66,6 @@ function BillingForm({ isLoading, onSubmit, ...props }) {
       <LoaderButton
         block
         type="submit"
-        bsSize="large"
         isLoading={isLoading}
         disabled={!validateForm()}
       >

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
-import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Form, Row, Col } from "react-bootstrap";
 import { s3Upload } from "../libs/awsLib";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
@@ -117,18 +117,34 @@ export default function Products(props) {
   return (
     <div className="Products">
       {product && (
-        <form onSubmit={handleSubmit}>
-          <FormGroup controlId="Category">
-            <FormControl
+        <Form>
+          <Form.Group as={Row} controlId="formPlaintextEmail">
+            <Form.Label column sm="4">
+              Product Category
+            </Form.Label>
+            <Col sm="8">
+              <Form.Control plaintext readOnly defaultValue={category} />
+            </Col>
+          </Form.Group>
+
+          <LoaderButton variant="primary" type="submit">
+            Save
+          </LoaderButton>
+        </Form>
+
+        /* {product && (
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="Category">
+            <Form.Control
               value={category}
               componentClass="textarea"
               onChange={(e) => setCategory(e.target.value)}
             />
-          </FormGroup>
+          </Form.Group>
           {product.Attachment && (
-            <FormGroup>
-              <FormLabel>Attachment</FormLabel>
-              <FormControl.Static>
+            <Form.Group>
+              <Form.Label>Attachment</Form.Label>
+              <Form.Control.Static>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -136,33 +152,26 @@ export default function Products(props) {
                 >
                   {formatFilename(product.Attachment)}
                 </a>
-              </FormControl.Static>
-            </FormGroup>
+              </Form.Control.Static>
+            </Form.Group>
           )}
-          <FormGroup controlId="file">
-            {!product.Attachment && <FormLabel>Attachment</FormLabel>}
-            <FormControl onChange={handleFileChange} type="file" />
-          </FormGroup>
+          <Form.Group controlId="file">
+            {!product.Attachment && <Form.Label>Attachment</Form.Label>}
+            <Form.Control onChange={handleFileChange} type="file" />
+          </Form.Group>
           <LoaderButton
             block
             type="submit"
-            bsSize="large"
-            bsStyle="primary"
             isLoading={isLoading}
             disabled={!validateForm()}
           >
             Save
           </LoaderButton>
-          <LoaderButton
-            block
-            bsSize="large"
-            bsStyle="danger"
-            onClick={handleDelete}
-            isLoading={isDeleting}
-          >
+          <LoaderButton block onClick={handleDelete} isLoading={isDeleting}>
             Delete
           </LoaderButton>
-        </form>
+        </Form>
+      )} */
       )}
     </div>
   );
