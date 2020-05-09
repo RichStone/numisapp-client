@@ -1,80 +1,69 @@
 import React from "react";
 import { PricingTable, PricingSlot, PricingDetail } from "react-pricing-table";
+import "./PricingTable.css";
 
 export default function PricingTableComponent(props) {
-  function submit() {
-    console.log("submittooo");
+  async function goToSignup() {
+    props.history.push("/signup");
   }
+
+  function openCalendlyScheduling() {
+    window.open("https://calendly.com/richstone/intro", "_blank");
+  }
+
   return (
     <PricingTable highlightColor="#5bc0de">
       <PricingSlot
-        onClick={submit}
-        buttonText="TRY IT FREE"
+        onClick={goToSignup}
+        buttonText="REGISTER"
         title="FREE"
-        priceText="$0/month"
+        priceText="$0"
+        className="btn btn-info"
       >
-        <PricingDetail>
-          {" "}
-          <b>15</b> projects
-        </PricingDetail>
-        <PricingDetail>
-          {" "}
-          <b>5 GB</b> storage
-        </PricingDetail>
-        <PricingDetail>
-          {" "}
-          <b>5</b> users
-        </PricingDetail>
-        <PricingDetail strikethrough>
-          {" "}
-          <b>Time tracking</b>
-        </PricingDetail>
+        <PricingDetail> Explore our Work in Progress </PricingDetail>
       </PricingSlot>
+
       <PricingSlot
         highlighted
-        onClick={submit}
-        buttonText="SIGN UP"
-        title="BASIC"
-        priceText="$24/month"
+        onClick={openCalendlyScheduling}
+        buttonText="FREE DEMO"
+        title="NUMIS PRO"
+        priceText={`Pre-order: $99/month`}
       >
         <PricingDetail>
           {" "}
-          <b>35</b> projects
+          <b>Your inventory in 1 place</b>
         </PricingDetail>
         <PricingDetail>
           {" "}
-          <b>15 GB</b> storage
+          <b>Unlimited products</b> storage
         </PricingDetail>
         <PricingDetail>
           {" "}
-          <b>Unlimited</b> users
+          <b>Integrate</b> ma-shops and eBay
         </PricingDetail>
         <PricingDetail>
           {" "}
-          <b>Time tracking</b>
+          <b>
+            Coming November 2020 <del>(300$/month)</del>
+          </b>
         </PricingDetail>
       </PricingSlot>
       <PricingSlot
-        onClick={submit}
-        buttonText="SIGN UP"
-        title="PROFESSIONAL"
-        priceText="$99/month"
+        onClick={openCalendlyScheduling}
+        buttonText="FREE CALL"
+        title="CUSTOM SOLUTIONS"
+        priceText="Let's talk"
       >
+        <PricingDetail> Quick Proposal</PricingDetail>
+        <PricingDetail> Personalized Solutions</PricingDetail>
         <PricingDetail>
           {" "}
-          <b>100</b> projects
+          We <b>set up</b> your shop
         </PricingDetail>
         <PricingDetail>
           {" "}
-          <b>30 GB</b> storage
-        </PricingDetail>
-        <PricingDetail>
-          {" "}
-          <b>Unlimited</b> users
-        </PricingDetail>
-        <PricingDetail>
-          {" "}
-          <b>Time tracking</b>
+          We <b>Integrate</b> your existing systems
         </PricingDetail>
       </PricingSlot>
     </PricingTable>

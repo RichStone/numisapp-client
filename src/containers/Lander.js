@@ -74,9 +74,8 @@ export default function Lander(props) {
         description={ebayFeatureDesc}
       ></LandingPageFeature>
 
-      <div>
-        <PricingTableComponent />
-      </div>
+      <PricingTableComponent {...props} />
+
       <h1>Numify</h1>
       <p>Numismat's number 1. digital friend.</p>
       <div>

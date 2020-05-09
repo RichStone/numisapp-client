@@ -5,3 +5,8 @@
 .App .nav {
   font-size: larger;
 }
+
+.brand {
+  font-weight: bold;
+  font-size: larger;
+}

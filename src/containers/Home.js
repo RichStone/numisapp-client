@@ -56,7 +56,7 @@ export default function Home(props) {
   }
 
   function renderLander() {
-    return <Lander />;
+    return <Lander {...props} />;
   }
 
   function renderProducts() {
