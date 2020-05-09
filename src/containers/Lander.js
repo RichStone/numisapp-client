@@ -22,12 +22,13 @@ export default function Lander(props) {
           control.
         </p>
         <p>
-          <Link
-            to="https://calendly.com/richstone/intro"
-            className="btn btn-info btn-lg"
+          <a
+            href="https://calendly.com/richstone/intro"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Schedule Demo
-          </Link>
+            <Button className="btn btn-info btn-lg">Schedule Demo</Button>
+          </a>
         </p>
       </Jumbotron>
       ;
@@ -37,12 +38,13 @@ export default function Lander(props) {
       <h1>Numify</h1>
       <p>Numismat's number 1. digital friend.</p>
       <div>
-        <Link to="/login" className="btn btn-info btn-lg">
-          Login
-        </Link>
-        <Link to="/signup" className="btn btn-success btn-lg">
-          Signup
-        </Link>
+        <a
+          href="https://calendly.com/richstone/intro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button className="btn btn-info btn-lg">Schedule Demo</Button>
+        </a>
       </div>
       <div>
         <Image src="/images/netlify-smilo.png" id="logo" rounded />
