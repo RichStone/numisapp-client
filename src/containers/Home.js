@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { PageHeader, ListGroup, ListGroupItem, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 import "./Home.css";
+import Lander from "./Lander";
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
@@ -56,23 +56,7 @@ export default function Home(props) {
   }
 
   function renderLander() {
-    return (
-      <div className="lander">
-        <h1>Numify</h1>
-        <p>Numismat's number 1. digital friend.</p>
-        <div>
-          <Link to="/login" className="btn btn-info btn-lg">
-            Login
-          </Link>
-          <Link to="/signup" className="btn btn-success btn-lg">
-            Signup
-          </Link>
-        </div>
-        <div>
-          <Image src="/images/netlify-smilo.png" id="logo" rounded />
-        </div>
-      </div>
-    );
+    return <Lander />;
   }
 
   function renderProducts() {
