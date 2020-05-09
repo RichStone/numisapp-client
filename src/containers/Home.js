@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 import "./Home.css";
@@ -62,7 +62,7 @@ export default function Home(props) {
   function renderProducts() {
     return (
       <div className="products">
-        <PageHeader>Your Products</PageHeader>
+        <h2>Your Products</h2>
         <ListGroup>{!isLoading && renderProductsList(products)}</ListGroup>
       </div>
     );

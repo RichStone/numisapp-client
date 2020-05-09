@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
-import { Link, withRouter } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
 import "./App.css";
 import { Auth } from "aws-amplify";
 
@@ -37,38 +36,34 @@ function App(props) {
   return (
     !isAuthenticating && (
       <div className="App container">
-        <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Numify</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              {isAuthenticated ? (
-                <>
-                  <LinkContainer to="/settings">
-                    <NavItem>Settings</NavItem>
-                  </LinkContainer>
-                  <LinkContainer to="/info">
-                    <NavItem>Info</NavItem>
-                  </LinkContainer>
-                  <NavItem onClick={handleLogout}>Logout</NavItem>
-                </>
-              ) : (
-                <>
-                  <LinkContainer to="/signup">
-                    <NavItem>Signup</NavItem>
-                  </LinkContainer>
-                  <LinkContainer to="/login">
-                    <NavItem>Login</NavItem>
-                  </LinkContainer>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <Nav activeKey="/home" className="nav">
+          <Nav.Item>
+            <Nav.Link href="/">Numify</Nav.Link>
+          </Nav.Item>
+
+          {isAuthenticated ? (
+            <>
+              <Nav.Item className="pullRight">
+                <Nav.Link href="/settings">Settings</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/info">Info</Nav.Link>
+              </Nav.Item>
+              <Nav.Item onClick={handleLogout}>
+                <Nav.Link>Logout</Nav.Link>
+              </Nav.Item>
+            </>
+          ) : (
+            <>
+              <Nav.Item>
+                <Nav.Link href="/signup">Signup</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/login">Login</Nav.Link>
+              </Nav.Item>
+            </>
+          )}
+        </Nav>
         <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
       </div>
     )

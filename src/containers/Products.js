@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import { s3Upload } from "../libs/awsLib";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
@@ -51,7 +51,7 @@ export default function Products(props) {
 
   function saveProduct(product) {
     return API.put("products", `/products/${props.match.params.id}`, {
-      body: product
+      body: product,
     });
   }
 
@@ -62,8 +62,9 @@ export default function Products(props) {
 
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
       alert(
-        `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
-          1000000} MB.`
+        `Please pick a file smaller than ${
+          config.MAX_ATTACHMENT_SIZE / 1000000
+        } MB.`
       );
       return;
     }
@@ -77,7 +78,7 @@ export default function Products(props) {
 
       await saveProduct({
         Category: category,
-        Attachment: attachment || product.Attachment
+        Attachment: attachment || product.Attachment,
       });
 
       props.history.push("/");
@@ -121,12 +122,12 @@ export default function Products(props) {
             <FormControl
               value={category}
               componentClass="textarea"
-              onChange={e => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             />
           </FormGroup>
           {product.Attachment && (
             <FormGroup>
-              <ControlLabel>Attachment</ControlLabel>
+              <FormLabel>Attachment</FormLabel>
               <FormControl.Static>
                 <a
                   target="_blank"
@@ -139,7 +140,7 @@ export default function Products(props) {
             </FormGroup>
           )}
           <FormGroup controlId="file">
-            {!product.Attachment && <ControlLabel>Attachment</ControlLabel>}
+            {!product.Attachment && <FormLabel>Attachment</FormLabel>}
             <FormControl onChange={handleFileChange} type="file" />
           </FormGroup>
           <LoaderButton

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import LoaderButton from "./LoaderButton";
 import { useFormFields } from "../libs/hooksLib";
@@ -8,7 +8,7 @@ import "./BillingForm.css";
 function BillingForm({ isLoading, onSubmit, ...props }) {
   const [fields, handleFieldChange] = useFormFields({
     name: "",
-    storage: ""
+    storage: "",
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCardComplete, setIsCardComplete] = useState(false);
@@ -25,7 +25,7 @@ function BillingForm({ isLoading, onSubmit, ...props }) {
     setIsProcessing(true);
 
     const { token, error } = await props.stripe.createToken({
-      name: fields.name
+      name: fields.name,
     });
 
     setIsProcessing(false);
@@ -36,7 +36,7 @@ function BillingForm({ isLoading, onSubmit, ...props }) {
   return (
     <form className="BillingForm" onSubmit={handleSubmitClick}>
       <FormGroup bsSize="large" controlId="storage">
-        <ControlLabel>Storage</ControlLabel>
+        <FormLabel>Storage</FormLabel>
         <FormControl
           min="0"
           type="number"
@@ -47,7 +47,7 @@ function BillingForm({ isLoading, onSubmit, ...props }) {
       </FormGroup>
       <hr />
       <FormGroup bsSize="large" controlId="name">
-        <ControlLabel>Cardholder&apos;s name</ControlLabel>
+        <FormLabel>Cardholder&apos;s name</FormLabel>
         <FormControl
           type="text"
           value={fields.name}
@@ -55,12 +55,12 @@ function BillingForm({ isLoading, onSubmit, ...props }) {
           placeholder="Name on the card"
         />
       </FormGroup>
-      <ControlLabel>Credit Card Info</ControlLabel>
+      <FormLabel>Credit Card Info</FormLabel>
       <CardElement
         className="card-field"
-        onChange={e => setIsCardComplete(e.complete)}
+        onChange={(e) => setIsCardComplete(e.complete)}
         style={{
-          base: { fontSize: "18px", fontFamily: '"Open Sans", sans-serif' }
+          base: { fontSize: "18px", fontFamily: '"Open Sans", sans-serif' },
         }}
       />
       <LoaderButton

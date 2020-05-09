@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Image, Jumbotron, Button } from "react-bootstrap";
 import PricingTableComponent from "../components/PricingTable";
 import "./Lander.css";
