@@ -11,3 +11,8 @@
 .quick-access-item:hover {
   cursor: pointer;
 }
+
+.quick-access-bar a {
+  text-decoration: none;
+  color: inherit;
+}
