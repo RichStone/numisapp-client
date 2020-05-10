@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, ProgressBar } from "react-bootstrap";
 import { API } from "aws-amplify";
 import LoaderButton from "../components/LoaderButton";
+import NewProductCategories from "../components/NewProductCategories";
 import config from "../config";
 import { s3Upload } from "../libs/awsLib";
 import "./NewProduct.css";
@@ -52,11 +53,17 @@ export default function NewProduct(props) {
 
   return (
     <div className="NewProduct">
-      <form onSubmit={handleSubmit}>
+      <ProgressBar className="ProgressBar" animated now={45} />
+
+      <h2>Add a New Product</h2>
+
+      <NewProductCategories />
+
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId="Category">
+          <Form.Label>Product Name</Form.Label>
           <Form.Control
             value={Category}
-            componentClass="textarea"
             onChange={(e) => setCategory(e.target.value)}
           />
         </Form.Group>
@@ -72,7 +79,7 @@ export default function NewProduct(props) {
         >
           Add
         </LoaderButton>
-      </form>
+      </Form>
     </div>
   );
 }

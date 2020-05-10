@@ -137,7 +137,6 @@ export default function Products(props) {
           <Form.Group controlId="Category">
             <Form.Control
               value={category}
-              componentClass="textarea"
               onChange={(e) => setCategory(e.target.value)}
             />
           </Form.Group>
