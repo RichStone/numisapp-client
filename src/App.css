@@ -6,7 +6,7 @@
   font-size: larger;
 }
 
-.brand {
+#navbar-brand {
   font-weight: bold;
-  font-size: larger;
+  font-size: x-large;
 }
