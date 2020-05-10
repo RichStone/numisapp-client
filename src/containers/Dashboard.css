@@ -1,0 +1,13 @@
+.Dashboard .quick-access-bar {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.quick-access-bar .quick-access-item {
+  display: inline-block;
+  margin: 0 16px;
+}
+
+.quick-access-item:hover {
+  cursor: pointer;
+}

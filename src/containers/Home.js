@@ -4,6 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 import "./Home.css";
 import Lander from "./Lander";
+import Dashboard from "./Dashboard";
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
@@ -68,9 +69,13 @@ export default function Home(props) {
     );
   }
 
+  function renderDashboard() {
+    return <Dashboard />;
+  }
+
   return (
     <div className="Home">
-      {props.isAuthenticated ? renderProducts() : renderLander()}
+      {props.isAuthenticated ? renderDashboard() : renderLander()}
     </div>
   );
 }

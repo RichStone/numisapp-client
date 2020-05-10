@@ -11,6 +11,7 @@ import Info from "./containers/Info";
 import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
+import Dashboard from "./containers/Dashboard";
 
 export default function Routes({ appProps }) {
   return (
@@ -38,6 +39,12 @@ export default function Routes({ appProps }) {
         path="/info"
         exact
         component={Info}
+        appProps={appProps}
+      />
+      <AuthenticatedRoute
+        path="/dashboard"
+        exact
+        component={Dashboard}
         appProps={appProps}
       />
       <AuthenticatedRoute

@@ -48,6 +48,7 @@ function App(props) {
             <Nav>
               {isAuthenticated ? (
                 <>
+                  <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                   <Nav.Link href="/settings">Settings</Nav.Link>
                   <Nav.Link href="/info">Info</Nav.Link>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
