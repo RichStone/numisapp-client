@@ -3,16 +3,16 @@
   padding: 32px 0;
 }
 
-.quick-access-bar .quick-access-item {
+.Dashboard .quick-access-bar .quick-access-item {
   display: inline-block;
   margin: 0 16px;
 }
 
-.quick-access-item:hover {
+.Dashboard .quick-access-item:hover {
   cursor: pointer;
 }
 
-.quick-access-bar a {
+.Dashboard .quick-access-bar a {
   text-decoration: none;
   color: inherit;
 }

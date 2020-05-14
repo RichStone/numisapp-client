@@ -14,3 +14,26 @@
 .NewProduct .ProgressBar {
   margin: 32px auto;
 }
+
+.NewProduct .steps-bar {
+  text-align: center;
+  padding: 4px 0;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.NewProduct .steps-bar .steps-bar-item {
+  display: inline-block;
+  margin: 0 16px;
+}
+
+.NewProduct .steps-bar-item:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.NewProduct .steps-bar a {
+  text-decoration: none;
+  color: inherit;
+}
