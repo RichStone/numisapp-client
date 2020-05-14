@@ -112,7 +112,9 @@ export default function NewProduct(props) {
         <ImageDropzone />
       </section>
 
-      <div id="description">
+      <section id="description">
+        <h3>Product Details</h3>
+
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="Category">
             <Form.Label>Product Name</Form.Label>
@@ -139,7 +141,7 @@ export default function NewProduct(props) {
             Add
           </LoaderButton>
         </Form>
-      </div>
+      </section>
     </div>
   );
 }
