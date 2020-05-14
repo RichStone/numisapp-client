@@ -10,7 +10,7 @@ export default function Settings(props) {
 
   function billUser(details) {
     return API.post("products", "/billing", {
-      body: details
+      body: details,
     });
   }
 
@@ -25,7 +25,7 @@ export default function Settings(props) {
     try {
       await billUser({
         storage,
-        source: token.id
+        source: token.id,
       });
 
       alert("Your card has been charged successfully!");
@@ -38,6 +38,14 @@ export default function Settings(props) {
 
   return (
     <div className="Settings">
+      <h2>Welcome, Numismat!</h2>
+
+      <h3>Your Categories</h3>
+
+      <h3>Your ebay token</h3>
+
+      <h3>Your Details</h3>
+
       <StripeProvider apiKey={config.STRIPE_KEY}>
         <Elements>
           <BillingForm isLoading={isLoading} onSubmit={handleFormSubmit} />
