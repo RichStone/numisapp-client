@@ -39,12 +39,25 @@ export default function Settings(props) {
   return (
     <div className="Settings">
       <h2>Welcome, Numismat!</h2>
+      <p>
+        Here you can configure everything that is related to your shops and
+        products.
+      </p>
 
-      <h3>Your Categories</h3>
+      <h3>Your Custom Categories</h3>
+      <p>...</p>
 
       <h3>Your ebay token</h3>
+      <p>...</p>
 
-      <h3>Your Details</h3>
+      <h3>Your custom shop configurations</h3>
+      <p>...</p>
+      <p>...</p>
+
+      <h3>Your Contact Details</h3>
+      <p>...</p>
+      <p>...</p>
+      <p>...</p>
 
       <StripeProvider apiKey={config.STRIPE_KEY}>
         <Elements>
