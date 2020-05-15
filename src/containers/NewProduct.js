@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Form, ProgressBar, Image } from "react-bootstrap";
 import { MdDescription } from "react-icons/md";
 import { BsImages } from "react-icons/bs";
@@ -15,6 +16,13 @@ export default function NewProduct(props) {
   const file = useRef(null);
   const [Category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [currentView, setCurrentView] = useState("images");
+
+  let location = useLocation();
+  useEffect(() => {
+    let locationHash = location.hash.substr(1);
+    hideAllSectionsExcept(locationHash);
+  }, [location]);
 
   function validateForm() {
     return Category.length > 0;
@@ -60,7 +68,7 @@ export default function NewProduct(props) {
       <h2>Add a New Product</h2>
 
       <div className="steps-bar">
-        <ProgressBar className="ProgressBar" animated now={33} />
+        <ProgressBar className="ProgressBar" animated now={27} />
         <a href="#images">
           <div className="steps-bar-item">
             <IconContext.Provider value={{ color: "darkgray", size: "2em" }}>
@@ -106,13 +114,13 @@ export default function NewProduct(props) {
         </a>
       </div>
 
-      <section id="images">
+      <section id="images" className="new-product-config">
         <h3>Images</h3>
-        <p>Please add at least one image, but 12 at most.</p>
+        <p>Please add at least one image (12 max.)</p>
         <ImageDropzone />
       </section>
 
-      <section id="description">
+      <section id="description" className="new-product-config">
         <h3>Product Details</h3>
 
         <Form onSubmit={handleSubmit}>
@@ -142,6 +150,24 @@ export default function NewProduct(props) {
           </LoaderButton>
         </Form>
       </section>
+
+      <section
+        id="shoptrader-configuration"
+        className="new-product-config"
+      ></section>
+      <section
+        id="ma-shops-configuration"
+        className="new-product-config"
+      ></section>
+      <section id="ebay-configuration" className="new-product-config"></section>
     </div>
   );
+}
+
+function hideAllSectionsExcept(sectionId) {
+  // get all className='new-product-config'
+  // set all hidden
+  // set sectionId to display
+  // add transition animation
+  console.log(sectionId);
 }

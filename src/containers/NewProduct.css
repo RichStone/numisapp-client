@@ -49,3 +49,7 @@
 .NewProduct #description {
   margin: 80px 0;
 }
+
+.NewProduct .hidden {
+  display: none;
+}
