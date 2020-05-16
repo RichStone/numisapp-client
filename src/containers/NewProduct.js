@@ -1,6 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Form, ProgressBar, Image } from "react-bootstrap";
+import {
+  Form,
+  ProgressBar,
+  Image,
+  Row,
+  Col,
+  InputGroup,
+} from "react-bootstrap";
 import { MdDescription } from "react-icons/md";
 import { BsImages } from "react-icons/bs";
 import { IconContext } from "react-icons";
@@ -130,29 +137,131 @@ export default function NewProduct(props) {
         <h3>Product Details</h3>
 
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="Category">
-            <Form.Label>Product Name</Form.Label>
-            <Form.Control
-              value={Category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-          </Form.Group>
-
           <NewProductCategories />
 
           <NewProductCountries />
 
-          <Form.Group controlId="file">
-            <Form.Label>Image</Form.Label>
-            <Form.Control onChange={handleFileChange} type="file" />
-          </Form.Group>
+          <Row>
+            <Col md={4}>
+              <Form.Group controlId="ruler">
+                <Form.Label>Ruler</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+            <Col md={4}>
+              <Form.Group controlId="theme">
+                <Form.Label>Theme</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Label>Denomination</Form.Label>
+              <InputGroup className="mb-6">
+                <Form.Control placeholder="Nominal" />
+                <Form.Control placeholder="Currency" />
+              </InputGroup>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Form.Group controlId="year">
+                <Form.Label>Year</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="mint">
+                <Form.Label>Mint</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Form.Group controlId="quality">
+                <Form.Label>Quality</Form.Label>
+                <Form.Control as="select" multiple>
+                  <option>F</option>
+                  <option>VF</option>
+                  <option>XF</option>
+                  <option>AU</option>
+                  <option>UNC</option>
+                  <option>Proof</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+
+            <Col>
+              <Form.Group controlId="grade">
+                <Form.Label>Grade</Form.Label>
+                <Form.Control as="select">
+                  <option>-</option>
+                  <option>PCGS</option>
+                  <option>NGC</option>
+                  <option>ICG</option>
+                  <option>ANACS</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Form.Group controlId="metal">
+                <Form.Label>Metal</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="weight">
+                <Form.Label>Net weight</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Form.Group controlId="price">
+                <Form.Label>Price</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="stock">
+                <Form.Label>Stock</Form.Label>
+                <Form.Control />
+              </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Form.Group controlId="customLabel">
+                <Form.Label>Custom Label</Form.Label>
+                <Form.Control placeholder="A label to find your product easier later" />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Label>Custom File</Form.Label>
+              <Form.File
+                id="custom-file"
+                label="E.g. invoice, picture..."
+                custom
+              />
+            </Col>
+          </Row>
+
           <LoaderButton
+            className="LoaderButton"
             block
-            type="submit"
+            onClick={saveAndNext}
             isLoading={isLoading}
             disabled={!validateForm()}
           >
-            Add
+            Save & Next
           </LoaderButton>
         </Form>
       </section>
@@ -160,15 +269,251 @@ export default function NewProduct(props) {
       <section
         id="shoptrader-conf-tab"
         className={currentView === "shop" ? "" : "hidden"}
-      ></section>
+      >
+        <Form>
+          <Form.Check
+            type="switch"
+            id="shoptrader-switch"
+            label="Active on Shoptrader"
+            active
+          />
+          <hr />
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Category
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Description
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Price
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Quality
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Country
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Details
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <hr />
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Images
+            </Form.Label>
+            <Col sm={6}>
+              <ImageDropzone></ImageDropzone>
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <LoaderButton type="submit">Save & Next</LoaderButton>
+            </Col>
+          </Form.Group>
+        </Form>
+      </section>
+
       <section
         id="ma-shops-conf-tab"
         className={currentView === "ma-shops" ? "" : "hidden"}
-      ></section>
+      >
+        <Form>
+          <Form.Check type="switch" id="ma-switch" label="Active on MA-Shops" />
+          <hr />
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Category
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Description
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Price
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Quality
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Country
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Details
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <hr />
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Images
+            </Form.Label>
+            <Col sm={6}>
+              <ImageDropzone></ImageDropzone>
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <LoaderButton type="submit">Save & Next</LoaderButton>
+            </Col>
+          </Form.Group>
+        </Form>
+      </section>
+
       <section
         id="ebay-conf-tab"
         className={currentView === "ebay" ? "" : "hidden"}
-      ></section>
+      >
+        <Form>
+          <Form.Check type="switch" id="ebay-switch" label="Active on ebay" />
+          <hr />
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Category
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Description
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Price
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Quality
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Country
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Details
+            </Form.Label>
+            <Col sm={6}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
+          <hr />
+
+          <Form.Group as={Row}>
+            <Form.Label column sm={2}>
+              Images
+            </Form.Label>
+            <Col sm={6}>
+              <ImageDropzone></ImageDropzone>
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <LoaderButton type="submit">Save & Next</LoaderButton>
+            </Col>
+          </Form.Group>
+        </Form>
+      </section>
     </div>
   );
+}
+
+function saveAndNext() {
+  console.log("save and next clicked");
 }

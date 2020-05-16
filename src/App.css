@@ -2,8 +2,10 @@
   margin-top: 15px;
 }
 
-.App .nav {
+.App .navbar {
   font-size: larger;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #navbar-brand {

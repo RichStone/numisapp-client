@@ -21,11 +21,12 @@
   top: 0;
   padding-top: 8px;
   background-color: white;
+  z-index: 10;
 }
 
 .NewProduct .steps-bar .steps-bar-item {
   display: inline-block;
-  margin: 0 16px;
+  margin: 0 12px;
 }
 
 .NewProduct .steps-bar-item:hover {
@@ -60,4 +61,13 @@
 
 .NewProduct .hidden {
   display: none;
+}
+
+.NewProduct .LoaderButton {
+  width: 10em;
+  margin: 32px auto;
+}
+
+.NewProduct section {
+  margin-top: 80px;
 }
