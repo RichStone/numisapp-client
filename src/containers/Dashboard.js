@@ -14,7 +14,7 @@ export default function Dashboard() {
           </IconContext.Provider>
           <p>Products</p>
         </div>
-        <a href="/products/new">
+        <a href="/products/new#images">
           <div className="quick-access-item">
             <IconContext.Provider value={{ color: "blue", size: "3em" }}>
               <BsFilePlus />

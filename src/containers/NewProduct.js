@@ -7,6 +7,7 @@ import { IconContext } from "react-icons";
 import { API } from "aws-amplify";
 import LoaderButton from "../components/LoaderButton";
 import NewProductCategories from "../components/NewProductCategories";
+import NewProductCountries from "../components/NewProductCountries";
 import ImageDropzone from "../components/ImageDropzone";
 import config from "../config";
 import { s3Upload } from "../libs/awsLib";
@@ -16,13 +17,12 @@ export default function NewProduct(props) {
   const file = useRef(null);
   const [Category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [currentView, setCurrentView] = useState("images");
+  const [currentView, setCurrentView] = useState("");
 
-  let location = useLocation();
+  let urlLocation = useLocation();
   useEffect(() => {
-    let locationHash = location.hash.substr(1);
-    hideAllSectionsExcept(locationHash);
-  }, [location]);
+    setCurrentView(urlLocation.hash.substr(1));
+  }, [urlLocation, currentView]);
 
   function validateForm() {
     return Category.length > 0;
@@ -114,13 +114,19 @@ export default function NewProduct(props) {
         </a>
       </div>
 
-      <section id="images" className="new-product-config">
+      <section
+        id="images-tab"
+        className={currentView === "images" ? "" : "hidden"}
+      >
         <h3>Images</h3>
         <p>Please add at least one image (12 max.)</p>
         <ImageDropzone />
       </section>
 
-      <section id="description" className="new-product-config">
+      <section
+        id="description-tab"
+        className={currentView === "description" ? "" : "hidden"}
+      >
         <h3>Product Details</h3>
 
         <Form onSubmit={handleSubmit}>
@@ -134,7 +140,7 @@ export default function NewProduct(props) {
 
           <NewProductCategories />
 
-          <NewProductCategories />
+          <NewProductCountries />
 
           <Form.Group controlId="file">
             <Form.Label>Image</Form.Label>
@@ -152,22 +158,17 @@ export default function NewProduct(props) {
       </section>
 
       <section
-        id="shoptrader-configuration"
-        className="new-product-config"
+        id="shoptrader-conf-tab"
+        className={currentView === "shop" ? "" : "hidden"}
       ></section>
       <section
-        id="ma-shops-configuration"
-        className="new-product-config"
+        id="ma-shops-conf-tab"
+        className={currentView === "ma-shops" ? "" : "hidden"}
       ></section>
-      <section id="ebay-configuration" className="new-product-config"></section>
+      <section
+        id="ebay-conf-tab"
+        className={currentView === "ebay" ? "" : "hidden"}
+      ></section>
     </div>
   );
-}
-
-function hideAllSectionsExcept(sectionId) {
-  // get all className='new-product-config'
-  // set all hidden
-  // set sectionId to display
-  // add transition animation
-  console.log(sectionId);
 }

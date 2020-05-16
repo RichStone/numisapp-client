@@ -26,7 +26,7 @@ export default function NewProductCategories() {
 
   return (
     <div className="NewProductCategories">
-      <p>Choose Category</p>
+      <p>Your Categories</p>
       {categoryButtons}
     </div>
   );
