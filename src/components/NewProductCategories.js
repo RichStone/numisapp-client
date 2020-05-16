@@ -26,6 +26,7 @@ export default function NewProductCategories() {
 
   return (
     <div className="NewProductCategories">
+      <h4>Inventory Category</h4>
       <p>Your Categories</p>
       {categoryButtons}
     </div>

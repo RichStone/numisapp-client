@@ -35,7 +35,7 @@ function App(props) {
 
   return (
     !isAuthenticating && (
-      <div className="App container">
+      <div className="App">
         <Navbar bg="light" expand="md">
           <Navbar.Brand id="navbar-brand" href="/">
             Numify
@@ -62,7 +62,9 @@ function App(props) {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+        <div className="container">
+          <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+        </div>
       </div>
     )
   );

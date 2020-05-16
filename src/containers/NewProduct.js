@@ -77,12 +77,12 @@ export default function NewProduct(props) {
             <p>Images</p>
           </div>
         </a>
-        <a href="#description">
+        <a href="#inventory">
           <div className="steps-bar-item">
             <IconContext.Provider value={{ color: "darkgray", size: "2em" }}>
               <MdDescription />
             </IconContext.Provider>
-            <p>Desc</p>
+            <p>Inventory</p>
           </div>
         </a>
         <a href="#shop">
@@ -124,8 +124,8 @@ export default function NewProduct(props) {
       </section>
 
       <section
-        id="description-tab"
-        className={currentView === "description" ? "" : "hidden"}
+        id="inventory-tab"
+        className={currentView === "inventory" ? "" : "hidden"}
       >
         <h3>Product Details</h3>
 

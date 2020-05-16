@@ -18,7 +18,7 @@ export default function Lander(props) {
   const excelFeatureDesc = `
     Are you tired of doing the same work for every platform? 
     With numify you add your coins once and they are sent to e-commerce platforms automatically.
-    Now you can focus on your core business.
+    Now you can focus on your core business instead of managing Excel tables...
   `;
 
   const customShopFeatureDesc = `
