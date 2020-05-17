@@ -10,12 +10,14 @@ export default function Dashboard() {
   return (
     <div className="Dashboard">
       <div className="quick-access-bar">
-        <div className="quick-access-item">
-          <IconContext.Provider value={{ color: "blue", size: "3em" }}>
-            <FcList />
-          </IconContext.Provider>
-          <p>Products</p>
-        </div>
+        <a href="/inventory">
+          <div className="quick-access-item">
+            <IconContext.Provider value={{ color: "blue", size: "3em" }}>
+              <FcList />
+            </IconContext.Provider>
+            <p>Products</p>
+          </div>
+        </a>
         <a href="/products/new#images">
           <div className="quick-access-item">
             <IconContext.Provider value={{ color: "blue", size: "3em" }}>

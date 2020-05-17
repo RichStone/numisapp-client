@@ -7,6 +7,7 @@ import Signup from "./containers/SignUp";
 import Products from "./containers/Products";
 import NewProduct from "./containers/NewProduct";
 import Settings from "./containers/Settings";
+import Inventory from "./containers/Inventory";
 import Info from "./containers/Info";
 import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
@@ -57,6 +58,12 @@ export default function Routes({ appProps }) {
         path="/products/:id"
         exact
         component={Products}
+        appProps={appProps}
+      />
+      <AuthenticatedRoute
+        path="/inventory"
+        exact
+        component={Inventory}
         appProps={appProps}
       />
       {/* Finally, catch all unmatched routes */}
