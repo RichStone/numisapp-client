@@ -19,7 +19,7 @@ const data = {
 export default function BarChartExample() {
   return (
     <div>
-      <h3>Bar Example (custom size)</h3>
+      <h3>Sales per Month</h3>
       <Bar
         data={data}
         width={100}
